@@ -1,4 +1,3 @@
-import { getListing } from '@/lib/actions/listings'
 import { notFound } from 'next/navigation'
 import { ContentCard } from '@/components/listings/content-card'
 import { Button } from '@/components/ui/button'
@@ -6,6 +5,8 @@ import { Badge } from '@/components/ui/badge'
 import { ArrowLeft, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
 import { regenerateContent } from '@/lib/actions/listings'
+import { auth } from '@/auth'
+import { prisma } from '@/lib/prisma'
 
 const CARDS = [
   {
@@ -46,7 +47,21 @@ export default async function ListingPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const listing = await getListing(id)
+
+  const session = await auth()
+  const userId = session?.user?.id
+  if (!userId) notFound()
+
+  let listing
+  try {
+    listing = await prisma.listing.findFirst({
+      where: { id, userId },
+      include: { generatedContent: true },
+    })
+  } catch (err) {
+    console.error('[ListingPage] prisma query failed:', err)
+    throw err
+  }
 
   if (!listing) notFound()
 
