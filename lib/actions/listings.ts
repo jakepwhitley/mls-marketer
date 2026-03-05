@@ -40,6 +40,7 @@ async function checkUsageLimit(userId: string) {
 }
 
 export async function createListingAndGenerate(input: ListingInput) {
+  try {
   const session = await auth()
   if (!session?.user?.id) redirect('/auth/signin')
 
@@ -96,6 +97,11 @@ export async function createListingAndGenerate(input: ListingInput) {
   revalidatePath('/dashboard')
   revalidatePath('/listings')
   return { redirectTo: `/listings/${listing.id}` }
+  } catch (err) {
+    console.error('[createListingAndGenerate]', err)
+    const message = err instanceof Error ? err.message : String(err)
+    return { error: `Something went wrong: ${message}` }
+  }
 }
 
 export async function getUserUsage() {
