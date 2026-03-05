@@ -2,11 +2,11 @@ import { notFound } from 'next/navigation'
 import { ContentCard } from '@/components/listings/content-card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, RefreshCw } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { regenerateContent } from '@/lib/actions/listings'
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
+import { RegenerateButton } from '@/components/listings/regenerate-button'
 
 const CARDS = [
   {
@@ -100,21 +100,7 @@ export default async function ListingPage({
             )}
           </div>
         </div>
-        <form
-          action={async () => {
-            'use server'
-            await regenerateContent(id)
-          }}
-        >
-          <Button
-            variant="outline"
-            size="sm"
-            className="border-blue-200 text-blue-600 hover:bg-blue-50"
-          >
-            <RefreshCw className="w-4 h-4 mr-2" />
-            Regenerate All
-          </Button>
-        </form>
+        <RegenerateButton listingId={id} />
       </div>
 
       {/* Content cards */}
