@@ -16,3 +16,4 @@ out/
 # Misc
 .DS_Store
 *.log
+.env*.local

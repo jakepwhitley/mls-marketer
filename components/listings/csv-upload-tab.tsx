@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { parseMLSCsv } from '@/lib/csv/parser'
 import { createListingAndGenerate } from '@/lib/actions/listings'
 import { Button } from '@/components/ui/button'
@@ -13,6 +14,7 @@ export function CsvUploadTab() {
   const [file, setFile] = useState<File | null>(null)
   const [parsed, setParsed] = useState<ReturnType<typeof parseMLSCsv> | null>(null)
   const [error, setError] = useState('')
+  const router = useRouter()
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]
@@ -34,6 +36,7 @@ export function CsvUploadTab() {
     startTransition(async () => {
       const result = await createListingAndGenerate(listing)
       if (result?.error) setError(result.error)
+      else if (result?.redirectTo) router.push(result.redirectTo)
     })
   }
 

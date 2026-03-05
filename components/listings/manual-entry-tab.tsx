@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { createListingAndGenerate } from '@/lib/actions/listings'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,6 +12,7 @@ import { Zap } from 'lucide-react'
 export function ManualEntryTab() {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState('')
+  const router = useRouter()
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -32,6 +34,7 @@ export function ManualEntryTab() {
         description: (form.get('description') as string) || undefined,
       })
       if (result?.error) setError(result.error)
+      else if (result?.redirectTo) router.push(result.redirectTo)
     })
   }
 

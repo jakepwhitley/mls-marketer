@@ -69,10 +69,17 @@ export async function createListingAndGenerate(input: ListingInput) {
     },
   })
 
-  const generated = await generateListingContent({
-    ...input,
-    stylePreference: user?.stylePreference ?? 'professional',
-  })
+  let generated
+  try {
+    generated = await generateListingContent({
+      ...input,
+      stylePreference: user?.stylePreference ?? 'professional',
+    })
+  } catch (err) {
+    await prisma.listing.delete({ where: { id: listing.id } })
+    const message = err instanceof Error ? err.message : 'AI generation failed'
+    return { error: `Content generation failed: ${message}` }
+  }
 
   await prisma.generatedContent.create({
     data: {
@@ -88,7 +95,7 @@ export async function createListingAndGenerate(input: ListingInput) {
 
   revalidatePath('/dashboard')
   revalidatePath('/listings')
-  redirect(`/listings/${listing.id}`)
+  return { redirectTo: `/listings/${listing.id}` }
 }
 
 export async function getUserUsage() {
