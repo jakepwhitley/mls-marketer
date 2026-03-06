@@ -6,7 +6,7 @@ interface LinkedInPostProps {
 
 export function LinkedInPost({ content, userName, userInitials }: LinkedInPostProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden max-w-[550px] font-sans">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden max-w-[560px] mx-auto font-sans">
       {/* Header */}
       <div className="flex items-start gap-3 px-4 pt-4 pb-3">
         <div className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white font-bold flex-shrink-0">

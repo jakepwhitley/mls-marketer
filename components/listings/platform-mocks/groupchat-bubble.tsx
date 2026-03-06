@@ -6,7 +6,7 @@ interface GroupchatBubbleProps {
 
 export function GroupchatBubble({ content, userName, userInitials }: GroupchatBubbleProps) {
   return (
-    <div className="rounded-xl overflow-hidden shadow-md max-w-[380px] font-sans" style={{ backgroundColor: '#1c1c1e' }}>
+    <div className="rounded-xl overflow-hidden shadow-md max-w-[560px] mx-auto font-sans" style={{ backgroundColor: '#1c1c1e' }}>
       {/* Group chat header */}
       <div className="px-4 pt-4 pb-3 border-b border-white/10">
         <div className="flex items-center justify-center mb-2">

@@ -6,7 +6,7 @@ interface FacebookPostProps {
 
 export function FacebookPost({ content, userName, userInitials }: FacebookPostProps) {
   return (
-    <div className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden font-sans max-w-[500px]">
+    <div className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden font-sans max-w-[560px] mx-auto">
       {/* Header */}
       <div className="flex items-start gap-3 px-4 pt-4 pb-2">
         <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">

@@ -5,9 +5,9 @@ interface NewsletterBlockProps {
 
 export function NewsletterBlock({ content, userName }: NewsletterBlockProps) {
   return (
-    <div className="bg-gray-100 rounded-xl p-4 font-sans">
+    <div className="bg-gray-100 rounded-xl p-4 font-sans max-w-[560px] mx-auto">
       {/* Email client chrome */}
-      <div className="bg-white max-w-[560px] mx-auto rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         {/* Blue header */}
         <div className="bg-blue-600 px-6 py-5 text-white">
           <p className="text-xs uppercase tracking-widest opacity-75 mb-1">Market Update</p>

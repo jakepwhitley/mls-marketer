@@ -14,7 +14,7 @@ export function InstagramPost({ content, userName, userInitials }: InstagramPost
   const hashtags = hashtagLine.split(' ').filter(t => t.startsWith('#'))
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden max-w-[400px] font-sans">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden max-w-[560px] mx-auto font-sans">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3">
         <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-0.5">
