@@ -20,9 +20,9 @@ export function LinkedInPost({ content, userName, userInitials }: LinkedInPostPr
           <p className="text-xs text-gray-500 leading-tight mt-0.5">Real Estate Professional</p>
           <p className="text-xs text-gray-400 leading-tight">Just now · 🌐</p>
         </div>
-        <button className="text-sm font-semibold text-blue-600 border border-blue-600 rounded-full px-4 py-1 hover:bg-blue-50 transition-colors flex-shrink-0">
+        <span className="text-sm font-semibold text-blue-600 border border-blue-600 rounded-full px-4 py-1 hover:bg-blue-50 transition-colors flex-shrink-0">
           + Follow
-        </button>
+        </span>
       </div>
 
       {/* Post body */}
@@ -45,12 +45,12 @@ export function LinkedInPost({ content, userName, userInitials }: LinkedInPostPr
           { icon: '🔁', label: 'Repost' },
           { icon: '📤', label: 'Send' },
         ].map(({ icon, label }) => (
-          <button
+          <span
             key={label}
             className="flex-1 flex items-center justify-center gap-1 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:bg-gray-100 transition-colors"
           >
             <span>{icon}</span> {label}
-          </button>
+          </span>
         ))}
       </div>
     </div>

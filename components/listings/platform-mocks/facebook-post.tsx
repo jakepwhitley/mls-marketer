@@ -18,7 +18,7 @@ export function FacebookPost({ content, userName, userInitials }: FacebookPostPr
             Just now · <span>🌐</span>
           </p>
         </div>
-        <button className="text-gray-400 hover:text-gray-600 text-xl leading-none">···</button>
+        <span className="text-gray-400 text-xl leading-none">···</span>
       </div>
 
       {/* Post text */}
@@ -51,12 +51,12 @@ export function FacebookPost({ content, userName, userInitials }: FacebookPostPr
           { icon: '💬', label: 'Comment' },
           { icon: '↗️', label: 'Share' },
         ].map(({ icon, label }) => (
-          <button
+          <span
             key={label}
             className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100 transition-colors"
           >
             <span className="text-base">{icon}</span> {label}
-          </button>
+          </span>
         ))}
       </div>
     </div>

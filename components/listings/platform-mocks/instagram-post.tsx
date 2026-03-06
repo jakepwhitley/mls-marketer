@@ -27,7 +27,7 @@ export function InstagramPost({ content, userName, userInitials }: InstagramPost
         <div className="flex-1">
           <p className="font-semibold text-sm text-gray-900">{handle}</p>
         </div>
-        <button className="text-gray-800 font-bold text-lg leading-none">···</button>
+        <span className="text-gray-800 font-bold text-lg leading-none">···</span>
       </div>
 
       {/* Photo placeholder */}
@@ -41,11 +41,11 @@ export function InstagramPost({ content, userName, userInitials }: InstagramPost
       {/* Actions */}
       <div className="px-4 pt-3 pb-1 flex items-center">
         <div className="flex items-center gap-4 flex-1">
-          <button className="text-2xl hover:scale-110 transition-transform">🤍</button>
-          <button className="text-2xl hover:scale-110 transition-transform">💬</button>
-          <button className="text-2xl hover:scale-110 transition-transform">✈️</button>
+          <span className="text-2xl">🤍</span>
+          <span className="text-2xl">💬</span>
+          <span className="text-2xl">✈️</span>
         </div>
-        <button className="text-2xl hover:scale-110 transition-transform">🔖</button>
+        <span className="text-2xl">🔖</span>
       </div>
 
       {/* Likes */}

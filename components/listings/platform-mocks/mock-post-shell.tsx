@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Copy, Check, Pencil, X } from 'lucide-react'
@@ -8,7 +8,7 @@ import { Copy, Check, Pencil, X } from 'lucide-react'
 interface MockPostShellProps {
   content: string
   label: string
-  children: (text: string) => React.ReactNode
+  children: (text: string) => ReactNode
 }
 
 export function MockPostShell({ content, label, children }: MockPostShellProps) {
